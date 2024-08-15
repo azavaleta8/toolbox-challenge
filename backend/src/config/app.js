@@ -8,6 +8,7 @@ const { notFoundMiddleware, errorHandlerMiddleware } = require('../middlewares/e
 const { apiLimiter } = require('./rateLimit');
 
 const healthCheckRouter = require('../routes/healthCheckRouter');
+const fileRouter = require('../routes/fileRouter');
 
 const createApp = () => {
 	const app = express();
@@ -24,6 +25,7 @@ const createApp = () => {
 
 	// Routes
 	app.use('/api', healthCheckRouter);
+	app.use('/api/files', fileRouter);
 
 	// Root route
 	app.get('/', (req, res) => {
