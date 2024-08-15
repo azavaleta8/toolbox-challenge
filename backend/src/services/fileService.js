@@ -1,24 +1,24 @@
 const axios = require('axios');
 
 const API_BASE_URL = 'https://echo-serv.tbxnet.com/v1/secret';
-const API_KEY = process.env.API_KEY ||'aSuperSecretKey';
+const API_KEY = process.env.API_KEY || 'aSuperSecretKey';
 
 exports.getFilesList = async () => {
 	const response = await axios.get(`${API_BASE_URL}/files`, {
-		headers: { 
-            authorization: `Bearer ${API_KEY}`
-        },
+		headers: {
+			authorization: `Bearer ${API_KEY}`,
+		},
 	});
 	return response.data.files;
 };
 
 exports.getFileContent = async (fileName) => {
 	const response = await axios.get(`${API_BASE_URL}/file/${fileName}`, {
-		headers: { 
-            authorization: `Bearer ${API_KEY}`
-        },
+		headers: {
+			authorization: `Bearer ${API_KEY}`,
+		},
 	});
-    console.log(response.data)
+	console.log(response.data);
 	return response.data;
 };
 
@@ -44,7 +44,6 @@ exports.processCSVContent = (content) => {
 exports.getProcessedFilesData = async (fileName) => {
 	const files = fileName ? [fileName] : await this.getFilesList();
 	const processedData = [];
-
 	await Promise.all(files.map(async (file) => {
 		try {
 			const content = await this.getFileContent(file);
@@ -53,7 +52,7 @@ exports.getProcessedFilesData = async (fileName) => {
 				processedData.push({ file, lines });
 			}
 		} catch (error) {
-			console.error(`Error processing file ${file}:`, error.message)
+			console.error(`Error processing file ${file}:`, error.message);
 		}
 	}));
 

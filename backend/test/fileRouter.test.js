@@ -1,14 +1,20 @@
 const request = require('supertest');
 const chai = require('chai');
-const expect = chai.expect;
 const createApp = require('../src/config/app');
 const fileService = require('../src/services/fileService');
 
+const { expect } = chai;
+
 describe('API Endpoints', () => {
 	let app;
+	const originalGetProcessedFilesData = fileService.getProcessedFilesData;
 
 	before(() => {
 		app = createApp();
+	});
+
+	after(() => {
+		fileService.getProcessedFilesData = originalGetProcessedFilesData;
 	});
 
 	describe('GET /api/files/data', () => {

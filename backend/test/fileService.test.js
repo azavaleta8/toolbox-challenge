@@ -25,10 +25,12 @@ file1.csv,AtjW,6,d33a8ca5d36d3106219f66f939774cf5`;
 			]);
 		});
 
+		// eslint-disable-next-line no-unused-expressions
 		it('should handle empty CSV content', () => {
 			const csvContent = 'file,text,number,hex';
 			const result = fileService.processCSVContent(csvContent);
-			expect(result).to.be.an('array').that.is.empty;
+			console.log(result);
+			expect(result).to.be.an('array').with.lengthOf(0);
 		});
 
 		it('should ignore invalid lines in CSV content', () => {
@@ -54,7 +56,6 @@ file1.csv,AtjW,6,d33a8ca5d36d3106219f66f939774cf5`;
 			};
 
 			const result = await fileService.getProcessedFilesData();
-            console.log(result)
 			expect(result).to.deep.equal([
 				{
 					file: 'file1.csv',
