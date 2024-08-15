@@ -1,0 +1,33 @@
+{
+    "name": "toolbox-challenge-api",
+    "version": "1.0.0",
+    "description": "API for fecth files",
+    "main": "server.js",
+    "scripts": { 
+      "start": "node server.js",
+      "dev": "nodemon server.js",
+      "lint": "eslint .",
+      "lint:fix": "eslint . --fix"
+    },
+    "author": "Abel Zavaleta",
+    "license": "ISC",
+    "dependencies": {
+      "axios": "^1.7.3",
+      "cors": "^2.8.5",
+      "dotenv": "^10.0.0",
+      "express": "^4.17.1",
+      "express-rate-limit": "^7.4.0",
+      "express-validator": "^7.2.0",
+      "http-status-codes": "^2.3.0",
+      "morgan": "^1.10.0",
+      "swagger-jsdoc": "^6.2.8",
+      "swagger-ui-express": "^5.0.1"
+    },
+    "devDependencies": {
+      "eslint": "^8.2.0",
+      "eslint-config-airbnb-base": "^15.0.0",
+      "eslint-plugin-import": "^2.25.2",
+      "nodemon": "^2.0.15"
+    }
+  }
+  
