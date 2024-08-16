@@ -18,7 +18,6 @@ exports.getFileContent = async (fileName) => {
 			authorization: `Bearer ${API_KEY}`,
 		},
 	});
-	console.log(response.data);
 	return response.data;
 };
 
@@ -26,10 +25,13 @@ exports.processCSVContent = (content) => {
 	const lines = content.split('\n');
 	const header = lines[0].split(',');
 	const processedLines = [];
+	const valuesNotNull = ((values) => {
+		return (values[0] && values[1] && values[2] && values[3] ? true : false)
+	})
 
 	for (let i = 1; i < lines.length; i += 1) {
 		const values = lines[i].split(',');
-		if (values.length === header.length) {
+		if (values.length === header.length && valuesNotNull(values)) {
 			processedLines.push({
 				text: values[1],
 				number: parseInt(values[2], 10),

@@ -29,7 +29,6 @@ file1.csv,AtjW,6,d33a8ca5d36d3106219f66f939774cf5`;
 		it('should handle empty CSV content', () => {
 			const csvContent = 'file,text,number,hex';
 			const result = fileService.processCSVContent(csvContent);
-			console.log(result);
 			expect(result).to.be.an('array').with.lengthOf(0);
 		});
 
