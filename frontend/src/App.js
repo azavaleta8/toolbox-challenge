@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <Navbar bg="dark" variant="dark" expand="lg">
-        <Container>
+        <Container fluid className="mt-4">
           <Navbar.Brand>File Data Viewer</Navbar.Brand>
         </Container>
       </Navbar>
