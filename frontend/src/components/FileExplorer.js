@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import FileList from './FileList';
-import FileData from './FileData';
+import FileList from './fileList';
+import FileData from './fileData';
 import { getFilesList } from '../services/apiService';
 
 function FileExplorer({ searchTerm }) {
