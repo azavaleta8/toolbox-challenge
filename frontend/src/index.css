@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container-fluid {
+  max-width: 1200px;
+}
+
+h1 {
+  color: #007bff;
+}
+
+h2 {
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+.list-group-item.active {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.table th {
+  background-color: #f8f9fa;
+}

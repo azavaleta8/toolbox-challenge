@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import FileList from './components/fileList';
+import FileData from './components/fileData';
 
 function App() {
+  const [selectedFile, setSelectedFile] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fluid className="p-4">
+      <h1 className="mb-4">File Data Viewer</h1>
+      <Row>
+        <Col md={3}>
+          <FileList onFileSelect={setSelectedFile} />
+        </Col>
+        <Col md={9}>
+          <FileData selectedFile={selectedFile} />
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
