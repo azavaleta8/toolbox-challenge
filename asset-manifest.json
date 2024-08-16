@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/toolbox-challenge/static/css/main.f855e6bc.css",
-    "main.js": "/toolbox-challenge/static/js/main.27deed22.js",
+    "main.css": "/toolbox-challenge/static/css/main.1550df8a.css",
+    "main.js": "/toolbox-challenge/static/js/main.032ec050.js",
     "static/js/453.8ab44547.chunk.js": "/toolbox-challenge/static/js/453.8ab44547.chunk.js",
-    "static/media/logo.svg": "/toolbox-challenge/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/toolbox-challenge/index.html",
-    "main.f855e6bc.css.map": "/toolbox-challenge/static/css/main.f855e6bc.css.map",
-    "main.27deed22.js.map": "/toolbox-challenge/static/js/main.27deed22.js.map",
+    "main.1550df8a.css.map": "/toolbox-challenge/static/css/main.1550df8a.css.map",
+    "main.032ec050.js.map": "/toolbox-challenge/static/js/main.032ec050.js.map",
     "453.8ab44547.chunk.js.map": "/toolbox-challenge/static/js/453.8ab44547.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.27deed22.js"
+    "static/css/main.1550df8a.css",
+    "static/js/main.032ec050.js"
   ]
 }
