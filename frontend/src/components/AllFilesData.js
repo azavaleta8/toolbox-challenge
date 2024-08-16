@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Table, Alert, Spinner } from 'react-bootstrap';
 import { getFileData } from '../services/apiService';
 
-function AllFilesData() {
+function AllFilesData({ searchTerm }) {
   const [allData, setAllData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -13,6 +13,7 @@ function AllFilesData() {
         setLoading(true);
         const data = await getFileData();
         setAllData(data);
+        setError(null);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -22,6 +23,10 @@ function AllFilesData() {
 
     fetchAllData();
   }, []);
+
+  const filteredData = allData.filter(file => 
+    file.file.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (loading) {
     return <Spinner animation="border" role="status"><span className="visually-hidden">Loading...</span></Spinner>;
@@ -34,8 +39,8 @@ function AllFilesData() {
   return (
     <div>
       <h2>All Files Data</h2>
-      {allData.length === 0 ? (
-        <Alert variant="warning">No data available.</Alert>
+      {filteredData.length === 0 ? (
+        <Alert variant="info">No files match your search.</Alert>
       ) : (
         <Table striped bordered hover responsive>
           <thead>
@@ -47,7 +52,7 @@ function AllFilesData() {
             </tr>
           </thead>
           <tbody>
-            {allData.flatMap((file) => 
+            {filteredData.flatMap((file) => 
               file.lines.map((line, lineIndex) => (
                 <tr key={`${file.file}-${lineIndex}`}>
                   <td>{file.file}</td>
