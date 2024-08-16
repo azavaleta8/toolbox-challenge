@@ -13,6 +13,10 @@ RUN npm install
 # Copia los archivos y carpetas del proyecto al directorio de trabajo del contenedor
 COPY . .
 
+# Set environment variables
+ENV NODE_ENV=development
+ENV REACT_APP_API_URL=http://localhost:3000/api
+
 # Expone el puerto 4200
 EXPOSE 4200
 

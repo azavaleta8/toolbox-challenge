@@ -1,6 +1,20 @@
 import axios from 'axios';
 
-const API_URL = 'https://toolbox-challenge.onrender.com/api';
+// Default to the production URL
+const DEFAULT_API_URL = 'https://toolbox-challenge.onrender.com/api';
+
+// Function to get the API URL based on the environment
+const getApiUrl = () => {
+  // Check if we're in development mode
+  if (process.env.NODE_ENV === 'development') {
+    // Use the REACT_APP_API_URL if it's set, otherwise use localhost
+    return process.env.REACT_APP_API_URL || 'http://localhost:3000/api';
+  }
+  // In production, use the default URL
+  return DEFAULT_API_URL;
+};
+
+const API_URL = getApiUrl();
 
 const handleApiError = (error) => {
   console.error('API Error:', error);
