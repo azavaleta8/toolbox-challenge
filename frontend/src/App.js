@@ -1,23 +1,41 @@
 import React, { useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import FileList from './components/fileList';
-import FileData from './components/fileData';
+import { Container, Navbar, Nav } from 'react-bootstrap';
+import FileExplorer from './components/FileExplorer';
+import AllFilesData from './components/AllFilesData';
 
 function App() {
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [currentView, setCurrentView] = useState('explorer');
 
   return (
-    <Container fluid className="p-4">
-      <h1 className="mb-4">File Data Viewer</h1>
-      <Row>
-        <Col md={3}>
-          <FileList onFileSelect={setSelectedFile} />
-        </Col>
-        <Col md={9}>
-          <FileData selectedFile={selectedFile} />
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Navbar bg="dark" variant="dark" expand="lg">
+        <Container>
+          <Navbar.Brand>File Data Viewer</Navbar.Brand>
+        </Container>
+      </Navbar>
+
+      <Container fluid className="mt-4">
+        <Nav variant="tabs" className="mb-3">
+          <Nav.Item>
+            <Nav.Link 
+              active={currentView === 'explorer'} 
+              onClick={() => setCurrentView('explorer')}
+            >
+              File Explorer
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link 
+              active={currentView === 'allData'} 
+              onClick={() => setCurrentView('allData')}
+            >
+              All Files Data
+            </Nav.Link>
+          </Nav.Item>
+        </Nav>
+        {currentView === 'explorer' ? <FileExplorer /> : <AllFilesData />}
+      </Container>
+    </>
   );
 }
 
