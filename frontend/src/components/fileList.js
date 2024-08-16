@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ListGroup, Alert, Spinner } from 'react-bootstrap';
-import axios from 'axios';
+import { getFilesList } from '../services/apiService';
 
 function FileList({ onFileSelect }) {
   const [files, setFiles] = useState([]);
@@ -11,12 +11,10 @@ function FileList({ onFileSelect }) {
     const fetchFiles = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('https://toolbox-challenge.onrender.com/api/files/list');
-        setFiles(response.data.files);
-        setError(null);
+        const fetchedFiles = await getFilesList();
+        setFiles(fetchedFiles);
       } catch (error) {
-        console.error('Error fetching file list:', error);
-        setError('Failed to load file list. Please try again later.');
+        setError(error.message);
       } finally {
         setLoading(false);
       }
